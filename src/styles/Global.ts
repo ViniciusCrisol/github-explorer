@@ -17,6 +17,7 @@ body {
 
 body, input, button {
   font: 16px 'Roboto', sans-serif;
+  color: #3a3a3a;
 }
 
 #root {
@@ -25,9 +26,19 @@ body, input, button {
   padding: 40px 20px;
 }
 
+input, button {
+  border: 0;
+}
+
 button {
   cursor: pointer;
 }
+
+a {
+  color: #3a3a3a;
+  text-decoration: none;
+}
+
 `;
 
 export default globalStyles;
