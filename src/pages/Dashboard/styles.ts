@@ -1,26 +1,21 @@
 import styled from 'styled-components';
-import { shade } from 'polished';
 
 interface FormProps {
   hasError: boolean;
 }
 
-export const Container = styled.div`
-  h1 {
-    margin-top: 80px;
-    max-width: 450px;
+export const Title = styled.h1`
+  margin-top: 80px;
+  max-width: 450px;
 
-    font-size: 48px;
-    line-height: 56px;
-  }
+  font-size: 48px;
+  line-height: 56px;
 `;
 
 export const Form = styled.form<FormProps>`
   display: flex;
   max-width: 715px;
-
   margin-top: 40px;
-  margin-bottom: ${({ hasError }) => (hasError ? '0' : '24px')};
 
   input {
     flex: 1;
@@ -56,13 +51,13 @@ export const Form = styled.form<FormProps>`
   }
 `;
 
-export const Error = styled.span`
+export const Error = styled.span<FormProps>`
+  opacity: ${({ hasError }) => (hasError ? '1' : '0')};
   display: block;
   margin-top: 8px;
 
   font-size: 16px;
   color: #c53030;
-  line-height: 1;
 `;
 
 export const Repositories = styled.div`
@@ -93,7 +88,7 @@ export const Repositories = styled.div`
       width: 64px;
       height: 64px;
 
-      flex-shrink: none;
+      flex-shrink: 0;
       border-radius: 50%;
     }
 
