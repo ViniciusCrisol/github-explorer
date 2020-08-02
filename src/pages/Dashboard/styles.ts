@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
+interface FormProps {
+  hasError: boolean;
+}
+
 export const Container = styled.div`
   h1 {
     margin-top: 80px;
@@ -11,11 +15,12 @@ export const Container = styled.div`
   }
 `;
 
-export const Form = styled.form`
-  margin-top: 40px;
+export const Form = styled.form<FormProps>`
+  display: flex;
   max-width: 715px;
 
-  display: flex;
+  margin-top: 40px;
+  margin-bottom: ${({ hasError }) => (hasError ? '0' : '24px')};
 
   input {
     flex: 1;
@@ -23,6 +28,9 @@ export const Form = styled.form`
 
     padding: 0 24px;
     border-radius: 5px 0 0 5px;
+    border: ${({ hasError }) =>
+      hasError ? '2px solid #c53030' : '2px solid white'};
+    border-right: none;
 
     &::placeholder {
       color: #a8a8b3;
@@ -33,18 +41,28 @@ export const Form = styled.form`
     width: 210px;
     height: 70px;
 
-    background-color: #04d361;
+    background-color: ${({ hasError }) => (hasError ? '#c53030' : '#04d361')};
+
     border-radius: 0 5px 5px 0;
 
     color: white;
     font-weight: bold;
 
-    transition: background 200ms;
+    transition: filter 200ms;
 
     &:hover {
-      background-color: ${shade(0.08, '#04d361')};
+      filter: brightness(1.1);
     }
   }
+`;
+
+export const Error = styled.span`
+  display: block;
+  margin-top: 8px;
+
+  font-size: 16px;
+  color: #c53030;
+  line-height: 1;
 `;
 
 export const Repositories = styled.div`
